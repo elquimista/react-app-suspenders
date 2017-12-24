@@ -5,7 +5,6 @@
     },
     "precss": {},
     "postcss-cssnext": {},
-    "postcss-flexbugs-fixes": {},
-    "postcss-nested": {}
+    "postcss-flexbugs-fixes": {}
   }
 }

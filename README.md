@@ -15,7 +15,7 @@ yarn
 * Initiated using [create-react-app](https://github.com/facebookincubator/create-react-app)
 * Webpack configuration overriden using [react-app-rewired](https://github.com/timarney/react-app-rewired)
 * `.babelrc` with `react-app` preset and `transform-decorators-legacy` plugin
-* `.postcssrc` with [postcss-import](https://github.com/postcss/postcss-import), [precss](https://github.com/jonathantneal/precss), [cssnext](http://cssnext.io), [postcss-nested](https://github.com/postcss/postcss-nested)
+* `.postcssrc` with [postcss-import](https://github.com/postcss/postcss-import), [precss](https://github.com/jonathantneal/precss), [cssnext](http://cssnext.io)
 * `.eslintrc` with `airbnb-base`, `prettier` (using single quote rule)
 * `.browserslistrc`
 * redux, redux-actions, redux-logic, redux-persist, redux-form
