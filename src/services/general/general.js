@@ -26,3 +26,6 @@ export default function(state = initialState, action) {
   }
   return reducer(state, action);
 }
+
+// selectors
+export const busyStateSelector = state => state.general.isBusy;
