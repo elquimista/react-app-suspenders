@@ -1,10 +1,10 @@
-import { clearBusyState } from 'services/general';
+import { decreaseUiBlockerCount } from 'services/general';
 import { logics as authLogics } from './auth';
 
 export function handleGenericLogics({ dispatch }) {
-  return ({ action, op }) => {
-    if (action && /#\bblock-ui\b/.test(action.type) && op === 'end') {
-      dispatch(clearBusyState());
+  return ({ action, name, op }) => {
+    if (op === 'end' && /#\bblock-ui\b/.test(name)) {
+      dispatch(decreaseUiBlockerCount());
     }
   };
 }
