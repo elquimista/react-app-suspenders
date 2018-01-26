@@ -14,5 +14,15 @@ const App = () => (
   </Provider>
 );
 
+/* eslint-disable no-underscore-dangle */
+if (
+  process.env.NODE_ENV === 'production' &&
+  window.__REACT_DEVTOOLS_GLOBAL_HOOK__ &&
+  Object.keys(window.__REACT_DEVTOOLS_GLOBAL_HOOK__._renderers).length > 0
+) {
+  window.__REACT_DEVTOOLS_GLOBAL_HOOK__._renderers = {};
+}
+/* eslint-enable */
+
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
