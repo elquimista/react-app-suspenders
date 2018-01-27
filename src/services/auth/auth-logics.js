@@ -1,13 +1,14 @@
 import { createLogic } from 'redux-logic';
 import { push } from 'react-router-redux';
+import { getPrivateRoutes } from 'screens/routes';
 import { loggedInSelector } from './auth';
 
-const privateRoutes = ['/'];
+const PRIVATE_ROUTES = getPrivateRoutes();
 const routerAuthValidationLogic = createLogic({
   type: '@@router/LOCATION_CHANGE',
   validate({ getState, action }, allow, reject) {
     const isLoggedIn = loggedInSelector(getState());
-    const isPrivateRoute = privateRoutes.includes(action.payload.pathname);
+    const isPrivateRoute = PRIVATE_ROUTES.includes(action.payload.pathname);
 
     if (isPrivateRoute && !isLoggedIn) {
       reject(push('/login'));
