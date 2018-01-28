@@ -19,4 +19,3 @@ export const reduxPersistTransforms = [
   createWhitelistFilter('form', []),
   createBlacklistFilter('general', ['isBusy'])
 ];
-

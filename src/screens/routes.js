@@ -1,4 +1,4 @@
-import { match, unmatched, scope, authenticated } from 'utils/routing';
+import { unmatched, scope, authenticated } from 'utils/routing';
 import Dashboard from 'screens/Dashboard';
 import Auth from 'screens/Auth';
 import Login from 'screens/Auth/Login';

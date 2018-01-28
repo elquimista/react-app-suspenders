@@ -2,7 +2,7 @@ import { decreaseUiBlockerCount } from 'services/general';
 import { logics as authLogics } from './auth';
 
 export function handleGenericLogics({ dispatch }) {
-  return ({ action, name, op }) => {
+  return ({ name, op }) => {
     if (op === 'end' && /#\bblock-ui\b/.test(name)) {
       dispatch(decreaseUiBlockerCount());
     }

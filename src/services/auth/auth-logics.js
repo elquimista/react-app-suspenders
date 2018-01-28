@@ -32,7 +32,4 @@ const actionAuthValidationLogic = createLogic({
   }
 });
 
-export default [
-  routerAuthValidationLogic,
-  actionAuthValidationLogic
-];
+export default [routerAuthValidationLogic, actionAuthValidationLogic];
