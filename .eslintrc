@@ -1,6 +1,6 @@
 {
-  "extends": ["airbnb-base", "prettier"],
-  "plugins": ["prettier"],
+  "extends": ["airbnb-base", "plugin:react-pug/all", "prettier"],
+  "plugins": ["prettier", "react-pug"],
   "env": {
     "browser": true
   },
@@ -10,7 +10,8 @@
       {
         "singleQuote": true
       }
-    ]
+    ],
+    "class-methods-use-this": "off"
   },
   "settings": {
     "import/resolver": {
