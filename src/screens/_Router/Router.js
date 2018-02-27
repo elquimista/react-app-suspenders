@@ -5,20 +5,23 @@ import { history } from 'store';
 import { scopes, routes } from 'screens/routes';
 
 export default function Router() {
-  return (
-    <ConnectedRouter history={history}>
-      <Switch>
-        {scopes.map(scope => (
-          <scope.module key={scope.module.name}>
-            {scope.routes.map(({ path, component }) => (
-              <Route key={path} exact path={path} component={component} />
-            ))}
-          </scope.module>
-        ))}
-        {routes.map(({ path, component }) => (
-          <Route key={path || ''} exact path={path} component={component} />
-        ))}
-      </Switch>
-    </ConnectedRouter>
-  );
+  let Module;
+  let moduleRoutes;
+  let path;
+  let component;
+
+  return pug`
+    ConnectedRouter(history=history)
+      div
+        each scope in scopes
+          - ({ module: Module, routes: moduleRoutes } = scope);
+          Module(key=Module.name)
+            each route in moduleRoutes
+              - ({ path, component } = route);
+              Route(key=path exact=true path=path component=component)
+        Switch
+          each route in routes
+            - ({ path, component } = route);
+            Route(key=path || '' exact=true path=path component=component)
+  `;
 }

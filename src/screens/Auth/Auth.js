@@ -10,13 +10,17 @@ const mapStateToProps = createStructuredSelector({
 
 function withRedirect(Component) {
   return connect(mapStateToProps)(
-    ({ isLoggedIn, ...props }) =>
-      isLoggedIn ? <Redirect to="/" /> : <Component {...props} />
+    ({ isLoggedIn, ...props }) => pug`
+      if isLoggedIn
+        Redirect(to="/")
+      else
+        Component(...props)
+    `
   );
 }
 
 export default function Auth({ children }) {
-  return children.map(route => ({
+  return children.filter(e => e).map(route => ({
     ...route,
     props: {
       ...route.props,

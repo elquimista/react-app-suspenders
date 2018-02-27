@@ -6,13 +6,11 @@ import registerServiceWorker from 'registerServiceWorker';
 import store, { persistor } from 'store';
 import Router from 'screens/_Router';
 
-const App = () => (
-  <Provider store={store}>
-    <PersistGate persistor={persistor}>
-      <Router />
-    </PersistGate>
-  </Provider>
-);
+const App = () => pug`
+  Provider(store=store)
+    PersistGate(persistor=persistor)
+      Router
+`;
 
 /* eslint-disable no-underscore-dangle */
 if (
@@ -24,5 +22,5 @@ if (
 }
 /* eslint-enable */
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(pug`App`, document.getElementById('root'));
 registerServiceWorker();
