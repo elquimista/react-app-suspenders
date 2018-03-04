@@ -1,6 +1,5 @@
 const pojo = {};
 const globalRoutes = [];
-const scopes = [];
 
 function createMatch(self = pojo, routes = globalRoutes, cb = null) {
   return (path, { to: component }) => {
@@ -19,7 +18,6 @@ function createRoot(self = pojo, routes = globalRoutes, cb = null) {
 }
 
 Object.assign(pojo, {
-  scopes,
   routes: globalRoutes,
   match: createMatch(),
   root: createRoot(),
@@ -32,26 +30,11 @@ Object.assign(pojo, {
     });
     return self;
   },
-  scope({ module }) {
-    const self = {};
-    const scopeItem = { module, routes: [] };
-    scopes.push(scopeItem);
-    Object.assign(self, {
-      match: createMatch(self, scopeItem.routes)
-    });
-    return self;
-  },
   unmatched({ to: component }) {
     globalRoutes.push({ component });
   },
   getPrivateRoutes() {
-    const extract = routes =>
-      routes.filter(e => e.requiresAuthentication).map(e => e.path);
-    let routes = extract(globalRoutes);
-    scopes.forEach(scope => {
-      routes = routes.concat(extract(scope.routes));
-    });
-    return routes;
+    return globalRoutes.filter(e => e.requiresAuthentication).map(e => e.path);
   }
 });
 
