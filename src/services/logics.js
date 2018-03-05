@@ -1,5 +1,5 @@
 import { decreaseUiBlockerCount } from 'services/general';
-import { logics as authLogics } from './auth';
+import authLogics from './auth/auth-logics';
 
 export function handleGenericLogics({ dispatch }) {
   return ({ name, op }) => {
