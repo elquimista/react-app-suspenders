@@ -1,15 +1,20 @@
 import { createStore, compose, applyMiddleware } from 'redux';
 import { routerMiddleware } from 'react-router-redux';
-import { createLogicMiddleware } from 'redux-logic';
+import thunkMiddleware from 'redux-thunk';
 import { persistStore, persistCombineReducers } from 'redux-persist';
 import storage from 'redux-persist/es/storage';
 import createHistory from 'history/createBrowserHistory';
+import routerAuthMiddleware from 'services/auth/router-auth-middleware';
 import reducers, { reduxPersistTransforms } from 'services/reducers';
-import logics, { handleGenericLogics } from 'services/logics';
 
 const history = createHistory();
-const logicMiddleware = createLogicMiddleware(logics);
-const enhancers = [applyMiddleware(logicMiddleware, routerMiddleware(history))];
+const enhancers = [
+  applyMiddleware(
+    routerAuthMiddleware,
+    thunkMiddleware,
+    routerMiddleware(history)
+  )
+];
 
 /* eslint-disable no-underscore-dangle */
 if (
@@ -28,8 +33,6 @@ const persistConfig = {
 const reducer = persistCombineReducers(persistConfig, reducers);
 const store = createStore(reducer, compose(...enhancers));
 const persistor = persistStore(store);
-
-logicMiddleware.monitor$.subscribe(handleGenericLogics(store));
 
 export { history, persistor };
 export default store;

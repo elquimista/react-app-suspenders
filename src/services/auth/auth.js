@@ -2,11 +2,9 @@ import { createAction, handleActions } from 'redux-actions';
 import { createSelector } from 'reselect';
 
 // constants
-export const LOGIN = 'LOGIN#block-ui';
 export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN';
 
 // action creators
-export const login = createAction(LOGIN);
 export const setAuthToken = createAction(SET_AUTH_TOKEN);
 
 // reducer
