@@ -1,5 +1,5 @@
 # react-app-suspenders
-A React app template with our standard defaults, used at [knocknock](https://github.com/knocknock-team).
+A React app template with artificis' standard defaults.
 
 ![Daniel Craig with suspenders](https://i.pinimg.com/736x/ac/31/39/ac31394bb5f07efec2fd459e1a89ad75--daniel-creg-daniel-craig-james-bond.jpg)
 
@@ -18,6 +18,6 @@ yarn
 * `.postcssrc` with [postcss-import](https://github.com/postcss/postcss-import), [precss](https://github.com/jonathantneal/precss), [cssnext](http://cssnext.io)
 * `.eslintrc` with `airbnb-base`, `plugin:react-pug/all`, `prettier` (using single quote rule)
 * `.browserslistrc`
-* redux, redux-actions, redux-logic, redux-persist, redux-form
+* redux, redux-actions, redux-thunk, redux-persist, redux-form
 * react-router-dom, react-router-redux
 * reselect
